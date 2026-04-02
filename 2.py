@@ -3,17 +3,17 @@
 Оба ксерокса работают одновременно, копии не делятся. """
 
 def min_time_copy(n: int, x: int, y: int) -> int:
-    left, right = 0, max(x,y)* n 
-    while left < right:
+    left, right = 0, max(x,y)* (n - 1)
+    while left + 1 < right:
         mid = (left + right) // 2
         copies = mid // x + mid // y
         if copies == n:
             return mid
-        elif copies < n:
+        elif copies < n - 1:
             left = mid + 1
         else :
             right = mid
-    return left
+    return left + min(x,y)
 
 
 if __name__ = "__main__":
